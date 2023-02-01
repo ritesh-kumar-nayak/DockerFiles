@@ -111,7 +111,7 @@ These components work together to provide a self-healing, highly available, and 
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1675141929048/a285f5ce-cc0b-4138-9a27-877bf6be6899.png align="left")
 
-**NB:** In industry**,** they don't use this minikube inside EC2 or they don't spin multiple EC2 instances individually instead, they use EKS(Elastic Kubernetes Service) from AWS or GKE(Google Kubernetes Service) from GCP.
+**NB:** In industry\*\*,\*\* they don't use this minikube inside EC2 or they don't spin multiple EC2 instances individually instead, they use EKS(Elastic Kubernetes Service) from AWS or GKE(Google Kubernetes Service) from GCP.
 
 ## Why Minikube?
 
@@ -197,7 +197,7 @@ Namespaces are used to organize and limit access to resources within a cluster. 
 
 In a single node, there will be multiple pods and to identify these pods we have to categorize them under some labels or names.
 
-`$ kubectl get pods djangoPod` will display all the pods available with the namespace djangoPod namespace.
+`$ kubectl get pods djangoPod` will display all the pods available with the namespace **djangoPod**.
 
 ### Types of Namespace
 
@@ -242,7 +242,7 @@ To create a pod we have to write a YAML configuration as shown below.
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1675164615806/c647457a-924a-4200-9c1f-937ea4e525b2.png align="left")
 
-`$ kubectl apply -f pod.yaml` once the yaml file is written as above this command is fired to create a pod named **"node-todo-pod"**
+`$ kubectl apply -f pod.yaml` once the yaml file is written as above, this command is fired to create a pod named **"node-todo-pod"**
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1675164811170/80cb0e19-3f17-4746-b4fe-cb035dab3e7b.png align="left")
 
