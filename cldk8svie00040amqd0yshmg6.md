@@ -127,7 +127,9 @@ Install docker using the command `$ sudo apt install` [`docker.io`](http://docke
 
 The below command is needed to install minikube.
 
-`curl -LO` [`https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`](https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64) `sudo install minikube-linux-amd64 /usr/local/bin/minikube`
+`curl -LO` [`https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`](https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64)
+
+`sudo install minikube-linux-amd64 /usr/local/bin/minikube`
 
 For more info please visit [https://minikube.sigs.k8s.io/docs/start/](https://minikube.sigs.k8s.io/docs/start/)
 
