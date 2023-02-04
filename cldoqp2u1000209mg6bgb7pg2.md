@@ -54,7 +54,7 @@ We'll understand the complete **deployment.yaml** file below.
     
     * `name` : it defines the name of the deployment or the name of the app. It helps to identify the deployment. You can give any readable and easy-to-identify name.
         
-    * `labels` : this keyword is used to define labels that are attached to the Deployment. Labels are key-value pairs that can be used to categorize and identify resources in Kubernetes, such as Pods, Services, and Deployments. For example, in the following YAML file, the Deployment is labeled with `app: nginx`
+    * `labels` : this keyword is used to define labels that are attached to the Deployment. Labels are key-value pairs that can be used to categorize and identify resources in Kubernetes, such as Pods, Services, and Deployments. For example, in the following YAML file, the Deployment is labeled with `app: node-todo`
         
         ```yaml
         yamlCopy codeapiVersion: apps/v1
@@ -120,9 +120,9 @@ We'll understand the complete **deployment.yaml** file below.
                 
                 * `name`: Specifies the name of the container. In this case, it is `nginx`.
                     
-                * `image`: Specifies the Docker image that the container should run. In this case, it is `nginx:1.14.2`.
+                * `image`: Specifies the Docker image that the container should run.
                     
-                * `ports`: Specifies the ports that should be exposed by the container. In this case, it is `80`.
+                * `ports`: Specifies the ports that should be exposed by the container. In this case, it is `8001`.
                     
 
 ### Step-1.2(Final deployment file)
@@ -255,7 +255,7 @@ This is used to extract the package
 
 Before using ngrok we need to authenticate and generate a token for secure tunnel creation. You can do it from ngrok website by coping the below line.
 
-**NB: "**2LER3tmAHlElRfZpBbUjUaBOuUn\_7MwvX6U1fWmHg97Yhhyyd" this part will be different for your account.
+\*\*NB: "\*\*2LER3tmAHlElRfZpBbUjUaBOuUn\_7MwvX6U1fWmHg97Yhhyyd" this part will be different for your account.
 
 `$ ngrok config add-authtoken 2LER3tmAHlElRfZpBbUjUaBOuUn_7MwvX6U1fWmHg97Yhhyyd` using this am now able to access as below:
 
