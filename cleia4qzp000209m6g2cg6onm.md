@@ -1,5 +1,7 @@
 # Basic AWS Services For DevOps
 
+# Why and How Much of AWS for DevOps?
+
 AWS(Amazon Web Service) is a public cloud provider that provides 200+ cloud services covering infra, storage services, compute services, application services and many more that come under PaaS(Platform as a Service), IaaS(Infrastructure as a Service), SaaS(Software as a Service).
 
 However from a DevOps perspective, we do not really need to master all the 200 services so, we will be picking our services depending on our responsibility. In this article, we will be covering the minimum required AWS services to get started with DevOps.
@@ -10,7 +12,6 @@ Moving forward, categorizing the required basic services into **3** parts which 
     
 * Storage (S3, EBS, RDS, DynamoDB)
     
-
 * Compute (EC2, ECS, Lambda, Fragate)
     
 
@@ -296,7 +297,8 @@ Versioning of application: Retain versions of Objects and replicate objects with
     
 * Replication: S3 replication enables us to replicate objects from one bucket to another There are two types of replication-:
     
-    1) Cross-region replication: This replication is done when there are buckets in two different regions.
+    1. Cross-region replication: This replication is done when there are buckets in two different regions.
+        
     
     2)Same-region replication: Buckets can be in the same region Replication can be done between different accounts as well. Replication requires Versioning so, make sure you enable versioning before enabling replication.
     
