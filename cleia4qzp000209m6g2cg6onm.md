@@ -1,4 +1,4 @@
-# Basic AWS Services For DevOps
+# Must Have AWS Services For DevOps
 
 # Why and How Much of AWS for DevOps?
 
