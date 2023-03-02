@@ -4,7 +4,7 @@ datePublished: Thu Mar 02 2023 15:10:35 GMT+0000 (Coordinated Universal Time)
 cuid: cler8ua5k000909jl5xy3bl24
 slug: complete-terraform-fundamentals
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1677769435355/b3df3a15-dd25-4414-b742-d93fcae88008.png
-tags: devops, terraform, terraform-state, terraform-cloud, devops-journey
+tags: devops, terraform, iac, terraform-state, terraform-cloud
 
 ---
 
@@ -17,6 +17,25 @@ It allows users to define infrastructure resources and their dependencies in a d
 Terraform also provides a powerful workflow for managing infrastructure resources, allowing users to apply changes to infrastructure in a controlled and auditable way. It also supports version control and allows teams to collaborate on infrastructure changes through a centralized configuration.
 
 Overall, Terraform is a powerful tool for managing infrastructure resources at scale and is widely used by DevOps teams and infrastructure engineers.
+
+# IaC(Infrastructure as Code)
+
+IaaC stands for Infrastructure as Code, which is an approach to managing IT infrastructure by writing and managing code, rather than using manual processes or graphical user interfaces. With IaaC, you define your infrastructure as code in a declarative language, and use a tool like Terraform to manage the deployment, configuration, and maintenance of your infrastructure.
+
+Using IaaC has several benefits, including:
+
+1. Consistency: Infrastructure is defined and managed using code, so it is easy to ensure that all resources are configured in the same way, reducing the risk of configuration drift.
+    
+2. Version Control: Infrastructure code can be stored in version control systems like Git, making it easy to track changes, roll back to previous versions, and collaborate with others.
+    
+3. Automation: IaaC tools can automate the provisioning and configuration of infrastructure, making it easy to scale resources up or down as needed, and to perform routine maintenance tasks.
+    
+4. Reusability: Infrastructure code can be reused across different environments, making it easy to create development, staging, and production environments with the same configuration.
+    
+5. Predictability: Infrastructure code can be tested and validated before it is deployed, ensuring that it will work as expected when it is deployed.
+    
+
+Overall, IaaC allows organizations to manage their infrastructure more efficiently, with fewer errors, and with greater flexibility and control. Terraform is one of the most popular IaaC tools, and is widely used to manage cloud infrastructure on platforms like AWS, Azure, and Google Cloud.
 
 # Terraform VS AWS CloudFormation
 
@@ -35,14 +54,14 @@ Terraform and CloudFormation both are IaaC tools used to manage resources on the
 
 Ultimately, the choice between Terraform and CloudFormation depends on your specific needs and preferences. If you're working solely in AWS and prefer an imperative approach, CloudFormation may be the better choice. If you need to manage resources across multiple cloud providers or prefer a declarative approach, Terraform may be a better fit.
 
-### Terraform Installation
+## Terraform Installation
 
 **Getting the properties** : `sudo apt-get update && sudo apt-get install -y gnupg software-properties-common`  
-**GPG Key:** `wget -O-` [`https://apt.releases.hashicorp.com/gpg`](https://apt.releases.hashicorp.com/gpg) `|   gpg --dearmor |   sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg`
+**GPG Key:** `wget -O-` [`https://apt.releases.hashicorp.com/gpg`](https://apt.releases.hashicorp.com/gpg) `| gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg`
 
-**Verifying Key Fingerprint**: `gpg --no-default-keyring   --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg   --fingerprint`
+**Verifying Key Fingerprint**: `gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint`
 
-**Adding Repository to the system**: `echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]   `[`https://apt.releases.hashicorp.com`](https://apt.releases.hashicorp.com) `$(lsb_release -cs) main" |   sudo tee /etc/apt/sources.list.d/hashicorp.list`
+**Adding Repository to the system**: `echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]` [`https://apt.releases.hashicorp.com`](https://apt.releases.hashicorp.com) `$(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`
 
 **Updating system**: `sudo apt update`
 
@@ -176,7 +195,7 @@ output random_string{
 
 value = random_string.str.result
 
-}        
+}
 ```
 
 `random_string` resource to generate a random string in Terraform HCL.
