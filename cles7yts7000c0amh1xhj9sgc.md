@@ -8,11 +8,12 @@ tags: docker, nginx, terraform, containerization, hashicorp
 
 ---
 
-As we all know Docker is a containerization tool that allows developers to easily deploy, run, and manage applications in containers. Here our aim will be :
+# Terraform with Docker
+
+As we all are aware, Docker is a containerization tool that allows developers to easily deploy, run, and manage applications in containers. Here our aim will be :
 
 * Installing docker
     
-
 * Pulling docker image from docker hub
     
 * Creating a Container from the image and running it.
@@ -53,7 +54,6 @@ resource "docker_container" "nginx"{
 }
 ```
 
-##   
 Explanation of the Config file
 
 ### `terraform{}`
