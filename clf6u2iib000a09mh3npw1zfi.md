@@ -321,3 +321,32 @@ It's important to manage the `terraform.tfstate` file carefully and keep it in s
   "check_results": null
 }
 ```
+
+# Local terraform.tfstate vs Remote terraform.tfstate
+
+Local state files are stored on the machine running Terraform. This can be convenient because everything is in one place and Terraform can access the state file quickly. However, there are some downsides to using local state files:
+
+* If the machine running Terraform is lost or the state file is deleted, there is no backup.
+    
+* It can be difficult to share state files between team members.
+    
+* There is no built-in way to lock the state file, so two people could try to make changes at the same time and overwrite each other's changes.
+    
+
+Remote state files are stored in a storage backend like Amazon S3, Azure Blob Storage, or HashiCorp Consul. This can be more secure and reliable because the state file is stored in a centralized location. There are several advantages to using remote state files:
+
+* It is easy to share state files between team members.
+    
+* There is a built-in locking mechanism to prevent multiple people from making changes at the same time.
+    
+* Remote state files can be backed up and versioned, making it easier to recover from mistakes or rollback changes.
+    
+
+However, there are also some disadvantages to using remote state files:
+
+* Access to the storage backend is required for Terraform to work, which can introduce additional complexity and potential points of failure.
+    
+* Remote state files can be slower to access than local state files, depending on the storage backend used.
+    
+
+Overall, the decision of whether to use local or remote state files depends on the specific needs of the project and team. In general, remote state files are recommended for teams working together on infrastructure projects, while local state files may be sufficient for individuals or small teams working on simple projects.
