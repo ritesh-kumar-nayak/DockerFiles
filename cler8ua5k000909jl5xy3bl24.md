@@ -101,6 +101,8 @@ resource "type" "name" {
 
 ```java
 resource "local_file" "devops" {
+              |          |
+        (ResourceType) (ResourceName)
 
     filename = "/home/ubuntu/terraform-local/devopsAutomated.txt"
     content = "DevOps With terraform"
