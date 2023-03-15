@@ -269,3 +269,102 @@ It's important to note that `terraform destroy` is a destructive command and can
 Now you can see 2 instances have been terminated.
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678798184246/42faa4ef-58d9-490c-9f47-3e92132ca122.png align="center")
+
+**NB: As you can see the name of the instances is the same for both instances. However, we can give different names for each instance using meta arguments such as count and for each count which we will be discussing going forward.**
+
+# Meta Argument
+
+In Terraform, meta-arguments are special arguments that can be used to control how resources are managed and provisioned. These arguments are used to specify configuration details that are not directly related to the resource being created but instead, provide additional information on how to create or manage the resource.'
+
+There are several meta-arguments available in Terraform, including:
+
+* `depends_on`: This argument is used to specify dependencies between resources. Terraform uses this information to determine the order in which resources should be created or destroyed.
+    
+* `count`: This argument is used to create multiple instances of a resource, each with a unique set of attributes.
+    
+* `lifecycle`: This argument is used to specify how Terraform should handle the lifecycle of a resource. For example, you can use this argument to prevent a resource from being destroyed or to ignore changes to certain attributes.
+    
+* `provider`: This argument is used to specify the provider used to create a resource. Providers are plugins that Terraform uses to interact with specific services, such as AWS or Google Cloud.
+    
+* `provisioner`: This argument is used to specify how to provision a resource after it has been created. For example, you can use this argument to execute scripts or run configuration management tools like Ansible or Chef.
+    
+
+Meta-arguments are an important part of Terraform's flexibility and can be used to customize the behavior of resources to fit your specific needs.
+
+## main.tf with `count`
+
+```bash
+terraform {
+        required_providers {
+                aws = {
+                     source = "hashicorp/aws"
+                     version = ">= 4.16"
+                        }
+        }
+        require_version = ">=1.2.0"
+}
+
+provider "aws" {
+        region = "us-east-1"
+}
+resource "aws_instance" "aws_ec2_test" {
+        count = 4
+        ami = "ami-0557a15b87f6559cf"
+        instance_type = "t2.micro"
+        tags = {
+                Name = "TerraformServer- ${count.index}"
+                }
+        }
+```
+
+Once you apply the `terraform apply` it will create 4 new instances with different names as per the index below:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678893254249/9e956ee2-e4a0-44d6-8c74-17a933cb6e8a.png align="center")
+
+In the above **main.tf** file we have used `${count.index}` which is treated as a variable referring to the index of the count. Here each instance is triggered and named with its index number.
+
+## main.tf with `for-each`
+
+```bash
+terraform {
+        required_providers {
+                aws = {
+                     source = "hashicorp/aws"
+                     version = ">= 4.16"
+                        }
+        }
+        require_version = ">=1.2.0"
+}
+
+provider "aws" {
+        region = "us-east-1"
+}
+
+locals {
+        instanceNames = toset(["Server-Dev","Server-QA","Server-UAT","Server-Staging"])
+}
+
+resource "aws_instance" "aws_ec2_test" {
+        for_each = local.instanceNames
+        ami = "ami-0557a15b87f6559cf"
+        instance_type = "t2.micro"
+        tags = {
+                Name = each.key
+                }
+        }
+```
+
+In the above snippet, you can notice the differences which are :
+
+* We have added a new block as `locals {`toset(....)`}`: Here **toset()** is a method that converts a list to a set because for-each works only on sets as it contains unique values.
+    
+* Replaced the `count=4` with `for_each = locals.instanceNames` : for\_each work on iteration. It will iterate through the set **instanceNames**
+    
+* Changed the name to `each.key`: Once the for\_each iteration starts `each.key` will hold one value per iteration and pass it as a name. Here the names of the instances will be named as the names present in the **instanceNames** set.
+    
+
+Once you apply these changes terraform will destroy all the previous instances and will recreate new instances with respective names as below.
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678895958929/dd2dd400-456c-4192-84c8-f9e6686f9532.png align="center")
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678895895385/21587c7f-e56c-49ce-8fe3-35549be35aa9.png align="center")
