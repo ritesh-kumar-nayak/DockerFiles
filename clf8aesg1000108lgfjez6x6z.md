@@ -368,3 +368,46 @@ Once you apply these changes terraform will destroy all the previous instances a
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678895958929/dd2dd400-456c-4192-84c8-f9e6686f9532.png align="center")
 
 ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678895895385/21587c7f-e56c-49ce-8fe3-35549be35aa9.png align="center")
+
+# Creating instances with Different AMI and Names
+
+**Scenario**: If you have a requirement that says you need 4 instances of different OS and also different instance names respectively.
+
+To resolve the above scenario, we can use **map** instead of **Set**. As you know Map data structure consists of data in a key-value pair manner. Accordingly the **main.tf** code will look be changed as below:
+
+```bash
+terraform {
+        required_providers {
+                aws = {
+                     source = "hashicorp/aws"
+                     version = ">= 4.16"
+                        }
+        }
+        require_version = ">=1.2.0"
+}
+
+provider "aws" {
+        region = "us-east-1"
+}
+
+locals {
+        instanceNames = instanceNames = {"Server-Dev":"ami-005f9685cb30f234b","Server-QA":"ami-0557a15b87f6559cf","Server-UAT":"ami-005f9685cb30f234b","Server-Staging":"ami-0557a15b87f6559cf"}
+}
+
+resource "aws_instance" "aws_ec2_test" {
+
+        for_each = local.instanceNames
+        ami = each.value
+        instance_type = "t2.micro"
+        tags = {
+                Name = each.key
+                }
+        }
+```
+
+* The `locals{ }` block has been changed with key-value pair that contains Server Name as Key and AMI Id as the value where `ami-005f9685cb30f234b` and `ami-0557a15b87f6559cf` are **AWS-Linux** and **Ubuntu** respectively.
+    
+* In the resource { } block `ami = each.value` which means the value of the instanceNames map has been changed and assigned to variable ami and in `tags { }` block `Name = each.key` the key is assigned to **Name.**
+    
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1678953377680/dc0ef082-85f4-4270-a007-c44648015fa6.png align="center")
