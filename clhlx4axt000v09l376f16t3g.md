@@ -4,6 +4,7 @@ datePublished: Sat May 13 2023 11:42:43 GMT+0000 (Coordinated Universal Time)
 cuid: clhlx4axt000v09l376f16t3g
 slug: reddit-clone-deployment-with-kubernetes
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1683979609842/0a4b05a6-3612-4d8c-bc8c-ab2d20ea00de.png
+ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1683979899363/fb9c96ca-93e7-40f7-8526-cbf0a97fda99.png
 tags: aws, kubernetes, reddit, minikube, trainwithshubham
 
 ---
